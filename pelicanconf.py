@@ -26,7 +26,7 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 SOCIAL = (('github', 'http://www.github.com/oscarlsson'),
           ('linkedin', 'http://se.linkedin.com/pub/oscar-carlsson/63/3b7/801'),
           ('twitter', 'http://www.twitter.com/oscarlsson'),
-          ('tumblr', 'http://www.tumblr.com/oscarlsson'),
+          ('tumblr', 'http://oscarlsson.tumblr.com/'),
           ('facebook', 'http://www.facebook.com/oscarlsson'))
 
 DEFAULT_PAGINATION = 10

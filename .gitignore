@@ -56,3 +56,4 @@ docs/_build/
 # The content to upload to the blog
 # is the repo oscarlsson.github.io
 output/*
+*.pid
