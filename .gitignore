@@ -57,3 +57,5 @@ docs/_build/
 # is the repo oscarlsson.github.io
 output/*
 *.pid
+
+cache/
