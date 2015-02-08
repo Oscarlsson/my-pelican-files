@@ -1,7 +1,7 @@
 Title: Who is doing Machine Learning in Gothenburg? 
 Date: 2015-01-22 16:51
 Category: ML
-Tags: ML, gothenburg, chalmers, datamining
+Tags: MachineLearning, Gothenburg, Chalmers, DataMining 
 Slug: machinelearninggothenburg
 Author: Oscar Carlsson
 Lang: en
@@ -37,7 +37,7 @@ Chalmers offers a couple of interesting courses. Nothing in data mining but some
 
 # Industry
 ### Recorded Future
-> Recorded Future are a startup company headquartered in Cambridge, MA with offices in Arlington, VA and Gothenburg, Sweden. Their team includes computer scientists, statisticians, linguists, and technical business people with deep expertise in areas such as intelligence and security. They`re committed to organizing the web in a radically new and useful way.
+> Recorded Future is a startup company headquartered in Cambridge, MA with offices in Arlington, VA and Gothenburg, Sweden. Their team includes computer scientists, statisticians, linguists, and technical business people with deep expertise in areas such as intelligence and security. They`re committed to organizing the web in a radically new and useful way.
 
 I have heard, and seen job ads, indicating them looking for Data Scientists and Machine Learning engineers. Their dataset contains billions of texts and the tool they are developing is a way to analyze it.
 
@@ -73,6 +73,11 @@ No job advertisements out but they are looking for Machine Learning engineers.
 
 Heavily connected with Tajitsu as the people behind Tajitsu left Aitellu to start their own business. One of the algortihms used at  Aitellu is a so called evolutionary algortihm.
 As for jobs: they where looking for [python-developer with knowledge in AI](http://www.wannaremote.com/utvecklare-at-aitellu-technologies-ab-gothenburg-sweden-allows-remote/)
+
+### Dreamler
+> Dreamler's mission is to enable people to experience true efficiency and constant improvement, across all projects. Our product harnesses the competitiveness, speed, and seamless teamwork of multiplayer games to realize your biggest ideas.
+
+I'm not sure what data Dreamler has but this blog post indicates that they are at least interested in Machine Learning [http://blog.dreamler.com/machine-learning-in-dreamler/](http://blog.dreamler.com/machine-learning-in-dreamler/)
 
 ### Spotify
 > Music streaming service

@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-<title>DEMO Introduction to Python slides</title>
+<title>theoretical slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -1726,2737 +1726,1073 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="SpotifyLogo/RGB/PNG/Spotify_Logo_RGB_Black.png" style="height:auto; width:auto; max-width:300px; max-height:300px; position:left;"/></p>
-<h2 id="lets-see-some-of-that-python-magic-">Lets see some of that python magic!</h2>
+<p><img src="fig/Spotify_Logo_RGB_Black.png" style="height:auto; width:auto; max-width:300px; max-height:300px; position:left;"/></p>
+<h2 id="welcome-to-the-machine-learning-meetup-">Welcome to the Machine Learning meetup!</h2>
 <p>Todays agenda:</p>
+<p><strong> <em>18:15 - 18:45:</em>
+Introduction to clustering and feature engineering</strong></p>
+<p>Short break, refill drinks, greet &amp; meet etc.</p>
+<p><em>19:00 - 19:30:</em>
+Introduction to data (mining) analysis in Python</p>
+<p><em>19:30: </em>
+Hang around and discuss clustering and machine learning. </p>
+</div>
+</div>
+</div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h1 style="font-size: 400%"> Who is it that we have here today? </h1>
+<br>
+<br>
+<br></p>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Round the table</p>
+<p>My name is Oscar Carlsson</p>
+<ul>
+<li>Data Engineer at Spotify</li>
+<li>Today I do statstical analysis, run A/B test and anything related to our huge amount of data.</li>
+<li>My msc thesis was a cluster analysis on spotify. </li>
+</ul>
+<p>I will try to answer your questions now or in the break</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 style="font-size: 400%"> Introduction to clustering and feature enginneering </h1>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is the first of two presentations - an introduction to clustering and feature engineering</p>
+<p>and the later will be more code, both intro to python data analysis and clustering
+Get a feeling of how you could do it</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="outline-of-the-todays-talk">Outline of the todays talk</h1>
+<ul>
+<li><h2 id="the-problem">The problem</h2>
+</li>
+<li><h2 id="clustering-algorithms">Clustering algorithms</h2>
+</li>
+<li><h2 id="evaluation-of-the-clustering">Evaluation of the clustering</h2>
+</li>
+<li><h2 id="machine-learning-at-spotify">Machine Learning at Spotify</h2>
+</li>
+</ul>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>K-means, Hierarchical clustering
+Silhouette score</p>
+<p>and finish of with some machine learning at spotify</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 style="font-size: 300%"> The problem of clustering </h1>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So, what is clustering?</p>
+<p>Clustering is the task of grouping a set of object in such a way </p>
+<p>that objects in the same group are more similar to each other</p>
+<p>than to those in other groups.</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 style="font-size: 300%"> Clustering is the task of <strong>grouping</strong> a set of object in such a way that objects in the same group are more <strong>similar</strong> to each other than to those in other groups. </h1>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What is interesting in this is the resulting groups. 
+What objects ended up in the same cluster, and why? and what does that tell us?</p>
+<p>two important words - <strong> grouping </strong> and <strong>similiar</strong></p>
+<h1 style="font-size: 300%"> Grouping similar objects </h1>
+</div>
+</div>
+</div>
+    </aside><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="-grouping-group-cluster"><strong>Grouping</strong> - group = cluster</h3>
+<p>Each group could represent or tell us about something the objects share, some <strong>characteristic</strong>.</p>
+<h4 id="-similiar-two-arbitrary-objects-"><strong>Similiar - two arbitrary objects</strong>.</h4>
+<p>In clustering, how we define two objects to be similar has great importance to the output.
+So, how do define that two “objects” or “samples” in our data is similar? </p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="the-objects-could-be-text-documents-news-articles-">The objects could be text documents (news articles)</h1>
+<h1 id="and-the-grouping-could-be-the-theme-of-the-text-documents">And the grouping could be the theme of the text documents</h1>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I said that what is interesting with clustering is the <strong>resulting groups</strong>, the output of a clustering algortihm or model.</p>
+<p>And the output: for each sample in our data, <strong>to what group does it belong?</strong>
+Why those objects? Why does groups?</p>
+<p>In our example the output would be a assignment, for each text doucment, to which theme it belongs.
+Then the output is a <strong>hidden structure</strong> in our data. Nothing that is clearly stated, maybe obvious for a human, 
+but not for a computer.</p>
+<p>Basically, <strong>we want the computer to find and tells us about a hidden structure in our unlabeled data (un grouped)</strong></p>
+<p>This is the same explanaition used to describe <strong>Unsupervised learning</strong>.
+Clustering is unsupervised.
+But before we talk about unsupervised - I would like to mention Supervised Learning</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 style="font-size: 300%">  Supervised Learning </h1>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And i guess the most of you are familiar with the terms Supervised Learning and Unsupervised learning. 
+Explained just very brielfy supervised learning is when </p>
+<p>we know know a <strong>structure (labeling of data)</strong> and want to </p>
+<p><strong>train a model</strong></p>
+<p><em>so that it can <em>*reproduce this structure on unknown data</em></em>. </p>
+<p>If you have heard about <strong>classification</strong> we train a classifier on <strong>training data</strong> and categorize new samples with the model.</p>
+<p>So we have the data: <strong>X</strong>
+and we have the corresponding labels: <strong>Y</strong></p>
+<p>But <strong>training data is expensive</strong>. Not many have this assignment, it is much more common with just X</p>
+<ul>
+<li>Just Documents - Just a lot of data.</li>
+</ul>
+</div>
+</div>
+</div>
+    </aside><div class="fragment">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><h1 style="font-size: 300%"> data X and the labels Y </h1></center>
+</div>
+</div>
+</div>
+    </div><div class="fragment">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><h1 style="font-size: 300%"> (documents and categories)</h1></center>
+</div>
+</div>
+</div>
+    </div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h1 style="font-size: 300%"> Unsupervised Learning <h1></p>
+</div>
+</div>
+</div><div class="fragment">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><h1 style="font-size: 300%"> Only X </h1></center>
+</div>
+</div>
+</div>
+    </div><div class="fragment">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center><h1 style="font-size: 300%"> (documents only) </h1></center>
+</div>
+</div>
+</div>
+    </div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We have no Y. </p>
+<p>To let the machine (or computer) learn and find this Y that is explaining what we asked the computer of</p>
+<p>We need to <strong>feed it</strong> and <strong>help it</strong> by giving the <strong>relevant</strong> data.</p>
+<p>Obviously? No! Not always
+And what is relevant is what are going to put in X. The data.
+Finding similar artist: Based on what music they produce? On who is listening to them?
+Depending on what we use as the data</p>
+<p>And in the field of machine learning there is a rather <strong>unglourious</strong> but extremly <strong>necessary</strong> task called feature <strong>engineering</strong>.</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 style="font-size: 300%"> Feature Engineering </h1>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are not talking about <strong>software/product features</strong> but feature as some <strong>PROPERTY</strong> we observe in our data.</p>
+<p>One feature is an <strong>individual measurable property observed</strong>.</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Our dataset</strong> $$
+X = 
+  \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \\ \vdots \\ x_n \end{pmatrix} 
+$$</p>
+<p><strong>Each sample</strong>
+$$x_1 =   \begin{pmatrix} f_1, &amp; f_2, &amp; f_3, &amp; f_4, &amp; \dots, &amp; f_n \end{pmatrix}^T $$</p>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Big X is a feature matrix of size n_samples times n_features</p>
+<p>small x is a <strong>vector of features</strong>: refered to as <strong>Feature vector</strong></p>
+<p>The usual assumption of a algorithm is that the inpux $X$ is <strong>NUMERICAL</strong> </p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<center> 
+<h2 style="font-size: 200%"> 
+Define X means  <br>
+define each $x_i$ <br>
+means decide each $f_i$ <br>
+= <br>
+Feature Engineering
+</h2>
+</center>
+</div>
+</div>
+</div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="we-have-0-documents">We have $n$ DOCUMENTS</h1>
+<h1 id="each-document-1-is-a-numerical-vector">Each document $x_i$ is a numerical vector</h1>
+<h1 id="we-design-the-meaning-of-each-2-">We design the meaning of each $f_i$</h1>
+</div>
+</div>
+</div><div class="fragment">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="features-the-words-the-datetime-the-font-used-">Features: The words? The datetime? The font used?</h1>
+</div>
+</div>
+</div>
+    </div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Or if what we are clustering is text, such as music lyrics,
+we can use the <strong>“BAG-OF-WORDS MODEL”</strong> to present each lyrics.</p>
+<p>Then the<strong> occurence of each word</strong> is used as a <strong>feature</strong>.
+More on that in the demo after the break.</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p> $$
+X = 
+  \begin{pmatrix} document_1 \\ document_2 \\ document_3 \\ document_4 \\ \vdots \\ document_n \end{pmatrix} 
+, \:
+Y = 
+  \begin{pmatrix} subject_1 \\ subject_2 \\ subject_1 \\ subject_3 \\ \vdots \\ subject_k \end{pmatrix} 
+$$</p>
+<h1 id="-1-and-2-both-share-3-">$document_1$ and $document_3$ both share $subject_1$</h1>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here the hidden structure is the relationship between our documents and the subject</p>
+<ul>
+<li>Document 1 = News article about CPUS</li>
+<li>Document 2 = Blog post about Python</li>
+<li>Subject 1 = Computers</li>
+</ul>
+<p>=== </p>
+<p>And selecting the <strong>“perfect features”</strong> is not straight forward and requires <strong>experimenting</strong> and <strong>iteraction</strong>.</p>
+<p>But when we have chosen how to describe our data, X, we are ready for the clustering algorithms.</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="clustering-algorithms">Clustering algorithms</h1>
+<ul>
+<li><h3 id="k-means">K-means</h3>
+</li>
+<li><h3 id="hierarchical-clustering">Hierarchical Clustering</h3>
+</li>
+</ul>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Different type of clustering algorithms based on the output. </p>
+<p>Hard clustering, soft clustering and hierarchical clustering.</p>
+<ul>
+<li>Hard (flat) clustering as given by K-means give one subject to each document</li>
+<li>Soft gives a distribution of subjects for each document (LDA, EM-algorithm)</li>
+<li>Hierarchical gives a Tree of Hierarchical clusters - Not a one-to-one output!</li>
+</ul>
+<p>Also, the notion of similarity is important, as mentioned before <br></p>
+<p>As we now only focus only <strong>NUMERICAL</strong> vectors we can use <strong>Distance functions</strong>
+as similarity. Euclidean, cosine etc.</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h1 style="font-size: 300%">K-means<h1></p>
+<ul>
+<li>Need to specify: K  (Number of clusters)</li>
+<li>Each cluster is the <em>mean</em> of the samples (centroids)</li>
+</ul>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Most popular</strong></li>
+<li>partitions into K different clusters</li>
+<li>And assigns objects to the cluster which has the closest mean</li>
+</ul>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="the-algorithm-">The algorithm:</h2>
+<h3 id="specify-k-clusters">Specify K clusters</h3>
+<h3 id="1-randomly-create-k-clusters">1. Randomly create k clusters</h3>
+<h3 id="3-calculate-centroid-of-each-cluster-with-the-mean-">3. Calculate centroid of each cluster (with the mean)</h3>
+<h3 id="4-associate-samples-to-their-closest-centroid-with-squared-euclidean-distance-">4. Associate samples to their closest centroid (with squared euclidean distance)</h3>
+<h3 id="5-repeat-until-centroids-changes-very-little">5. Repeat until centroids changes very little</h3>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Squred euclidean distance</strong> to the mean and minimise it</li>
+</ul>
+<p>This works in two steps iteratively, </p>
+<ul>
+<li>Assign each observation to the cluster which mean is closest </li>
+<li>recalculate the arithmetic means based on the new assignments and do the assignment again.&#39;</li>
+</ul>
+<p>Until convergence = centroids dont change anymore</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="these-examples-are-stole-">These examples are stole.</h1>
+<h1 id="thank-you-summer-school-in-statistics-for-astronomers-v-">Thank you Summer School in Statistics for Astronomers V!</h1>
+</div>
+</div>
+</div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="our-example-2-d-data">Our example 2-D DATA</h1>
+<p><img src="fig/thedata.png" style="height:400px; width:400px;"></img></p>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is our data. No clusters yet</p>
+<p>This is an extreme, it is only 2 dimensions, but we will illustrate how k-means works.</p>
+<p>We will set K to be 2.</p>
+<p>We will start by throwing out 2 centroids (POINTS)
+and color each sample here depending on what cluster it belongs to.</p>
+<p>Blue = Cluster 1
+Red = Cluster 2</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="k-2-random-assignment">K = 2, RANDOM ASSIGNMENT</h1>
+<p><img src='fig/kmeans1.jpg' style="height:400px; width:400px;"></img></p>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Look! They ended up in the bottom left.</p>
+<p>The big blue dot is  the centroid of the first cluster
+The big red dot is the centroid of the second cluster</p>
+<p>The blues belong to blue as their distance to blue is shorter according
+to squared euclidean distance</p>
+<p>We have now assigned all the samples to one of the clusters. And this is to be noted. K-means always clusters all data. No-one is left behind.</p>
+<p>Now it is time to make the centroids be centroids of the data. We MOVE them to the center of the samples</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="update-the-centroids-move-clusters-">Update the centroids (Move clusters)</h1>
+<p><img src="fig/km2.jpg" style="height:400px; width:400px;"></img></p>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When we have moved the centroids, </p>
+<p>the closest distance for the blue sample down to the left </p>
+<p>is no longer blue, but red,</p>
+<p>so we better update their color.</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="recalculate-what-is-the-closest-center-update-colors-">Recalculate what is the closest center (Update colors)</h1>
+<p><img src='fig/kmeans3.jpg' style="height:400px; width:400px;" ></img></p>
+<h1 id="iterate">Iterate</h1>
+</div>
+</div>
+</div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="update-the-centroids-move-clusters-">Update the centroids (Move clusters)</h1>
+<p><img src='fig/kmeans4.jpg' style="height:400px; width:400px;"></img></p>
+</div>
+</div>
+</div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="recalculate-what-is-the-closest-center-update-colors-">Recalculate what is the closest center (Update colors)</h1>
+<p><img src='fig/kmeans5.jpg' style="height:400px; width:400px;"></img></p>
+</div>
+</div>
+</div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="stop-when-converge">Stop when converge</h1>
+<p><img src='fig/kmeans6.jpg' style="height:400px; width:400px;"></img></p>
+</div>
+</div>
+</div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$$\underset{\mathbf{S}} {\operatorname{arg\,min}}  \sum_{i=1}^{k} \sum_{\mathbf x \in S_i} \left\| \mathbf x - \boldsymbol\mu_i \right\|^2$$</p>
+</div>
+</div>
+</div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Disadvantages:</p>
+<h3 id="-local-optimum">* Local optimum</h3>
+<h3 id="-outliers">* Outliers</h3>
+<h3 id="-choosing-k">* Choosing K</h3>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>First sum: Each cluster</li>
+<li>Second sum: Each observation</li>
+</ul>
+<p>Note that the centroids can be arbitrary points in space and change just a little for each iteration.</p>
+<p><strong>can converge to a local optimum </strong>
+<strong>always will find a clustering but not guaranteed to be the best</strong></p>
+<p>The solution to this is to retry the algorithm mutiple times but with different initialisation of clusters. </p>
+<p><em>(sensistive to outliers: the mean)</em></p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h1 style="font-size: 300%">Hierarchical agglomerative clustering (HAC)<h1></p>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>No need to specify the number of clusters! Huge benefit!</p>
+<p>Works on distance matrixes =  We can choose what distance to use</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="the-agglomerative-algorithm-">The (agglomerative) algorithm:</h2>
+<h3 id="each-sample-is-a-cluster">Each sample is a cluster</h3>
+<h3 id="merge-the-two-closest-clusters-until-there-is-only-one-left">Merge the two closest clusters until there is only one left</h3>
+<h3 id="output-linkage-matrix-how-and-when-did-we-merge-two-clusters-">Output: Linkage matrix (How and when did we merge two clusters)</h3>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The other hierarchical clustering is the opposite</p>
+<p>The output can be vizualised in a dendrogram.
+In the dendrogram, we can see the steps of the algorithm, from one cluster
+as each sample, to one big cluster!</p>
+<p>Whatch out, big complicated, colorful picture incoming!</p>
+<p>The bottom is the begining, the top the end</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="dendrogram">Dendrogram</h2>
+<p><img src="fig/dendrogram.png"/></p>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>At the bottom of the dendrogram we see each sample as its own cluster and the higher we go the less clusters there are. </p>
+<p>These are not the only ones. Dbscan, k-medoids, Latent dirchlet allocation</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h1 style="font-size: 300%"> Evaluation of the algorithm <h1></p>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are getting to the end of the presentation - first evaluation and then machine learning at spotify, then we are done.</p>
+<p>But, what do we do when we have X and Y’. </p>
+<p>There is no reward or error to evalute a solution.</p>
+<p>Usually, clustering is evaluated based on the shape of the clustering. </p>
+<p>This is called internal evaluation.</p>
+<p>We can compute some internal evaluation to compare</p>
+<p>different algorithms and parameter tuning (such as k in k-means).</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="silhouette-score">Silhouette score</h1>
+<p>$$a(x) = \text{average distance to all other sample in the SAME cluster} $$</p>
+<p>$$b(x) = \text{average distance to the samples of the closest cluster}$$</p>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One internal evaluation is the silhouette score which is a score s on each sample i, s(i).</p>
+<p>a(i) is defined as the average distance to all other sample in the SAME cluster </p>
+<p>and b(i) to the samples of the closest cluster. The silhouette score is …. and range -1 &lt;= s(i) &lt;= 1</p>
+<p>-1 : i lies closer to another cluster, 1 : lies more closely to its cluster.</p>
+</div>
+</div>
+</div>
+    </aside><div class="fragment">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$$s(x) = \frac{b(x) - a(x)}{\max\{a(x),b(x)\}}, \forall x\in X$$</p>
+<p>$$ -1 \le s(x) \le 1 $$</p>
+</div>
+</div>
+</div>
+    </div><div class="fragment">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="if-we-have-training-data-we-can-use-it-to-evaluate">If we have training data we can use it to evaluate</h2>
+</div>
+</div>
+</div>
+    </div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="visualization-with-dimensionality-reduction">Visualization with dimensionality reduction</h1>
+</div>
+</div>
+</div><div class="fragment">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="fig/pca.jpeg"  /></p>
+</div>
+</div>
+</div>
+    </div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Not a focus of this talk but worth mentioning</p>
+<p>If we have high-dimensional data, which is impossible to vizualise</p>
+<p>We can construct a new data set with fewer conditions
+Where each conditions is a linear combinations of original conditions</p>
+<p>Helps us find dominant information in the data
+Assumption that the features with low variance contains small amount of information</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h1 style="font-size: 300%">Machine Learning at Spotify <h1></p>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I want to finish of with mentioning what and where we do Machine Learning
+spotify.</p>
+<p>Most famously: Rec sys</p>
+<ul>
+<li>Ensemble model<ul>
+<li>Collaborative Filtering</li>
+<li>Deep learning</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="recommender-systems">Recommender systems</h1>
+<ul>
+<li>Discovery - new music</li>
+<li>Related artists</li>
+<li>Radio</li>
+</ul>
+<p>Rec sys: <a href="http://www.a1k0n.net/spotify/ml-madison/">http://www.a1k0n.net/spotify/ml-madison/</a> <br>
+Deep Learning: <a href="http://benanne.github.io/2014/08/05/spotify-cnns.html">http://benanne.github.io/2014/08/05/spotify-cnns.html</a></p>
+<h1 id="clustering">Clustering</h1>
+<ul>
+<li>User behavior</li>
+<li>Artist disambiguation ( the kent bug )</li>
+</ul>
+</div>
+</div>
+</div><aside class="notes">
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We do cluster analysis on user behaviour - 
+trying find different charecaristics of users 
+and measure/analyze who is doing what.</p>
+<p>We have, what we refere to as “the Kent bug”.
+So, appratenly artist names are not unique.
+There exists multiple artists with the same name hence it happens that we mix up artist pages
+and display the wrong kents tracks on the swedish Kents page. 
+This problem is called Artist disambiguation 
+and is essentially the same as author disambiguation 
+( People with the same name, writing on different subjects).
+We solve it with hierarchical clustering where clusters are potentially ambigious artists 
+and let humans separate them.</p>
+</div>
+</div>
+</div>
+    </aside></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="stay-put-we-will-soon-start-again-">Stay put, we will soon start again!</h2>
 <blockquote>
 <p><em>18:15 - 18:45:</em>
 Introduction to clustering and feature engineering</p>
-<p>Short break, refill drinks, greet &amp; meet etc.</p>
-<p><strong> <em>19:00 - 19:30:</em>
-Introduction to data (mining) analysis in Python </strong></p>
+<p><strong> Short break, refill drinks, greet &amp; meet etc. </strong></p>
+<p><em>19:00 - 19:30:</em>
+Introduction to data (mining) analysis in Python</p>
 <p><em>19:30: </em>
-Hang around and discuss clustering and machine learning.</p>
+Hang around and discuss clustering and machine learning. </p>
 </blockquote>
+<p><img src="fig/Spotify_Logo_RGB_Black.png" style="height:auto; width:auto; max-width:300px; max-height:300px; position:left;"/></p>
 </div>
 </div>
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1> Introduction to data (mining) analysis in Python</h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="why-python-">Why python?</h1>
-</div>
-</div>
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="-matlab-vs-r-vs-python-">(Matlab) vs R vs Python!</h1>
-</div>
-</div>
-</div><div class="fragment">
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="learn-all-use-the-right-tool-for-the-right-task">Learn all, use the right tool for the right task</h3>
-</div>
-</div>
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="how-we-work-in-python-">How we work in Python:</h1>
-<h1 id="the-numpy-stack">The Numpy stack</h1>
-</div>
-</div>
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="buuuuzzwords-incoming-">Buuuuzzwords incoming!</h1>
-</div>
-</div>
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="store-the-raw-dataset-in-a-pandas-dataframe">Store the raw dataset in a <em>pandas</em> dataframe</h2>
-</div>
-</div>
-</div><div class="fragment">
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="engineer-features-and-store-in-a-numpy-array-">Engineer features and store in a <em>numpy-array</em></h2>
-</div>
-</div>
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="create-the-distance-matrix-with-scipy">Create the distance matrix with scipy</h2>
-</div>
-</div>
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="train-the-model-with-scikit-learn-">train the model with <em>scikit-learn</em></h2>
-</div>
-</div>
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="plot-the-result-with-matplotlib-">plot the result with <em>matplotlib</em></h2>
-</div>
-</div>
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="scikit-learn">Scikit-learn</h1>
-<ul>
-<li><h3 id="extremely-well-documented-with-examples">Extremely well documented with examples</h3>
-</li>
-<li><h3 id="consistent-api">Consistent API</h3>
-</li>
-<li><h3 id="big-community">Big community</h3>
-</li>
-<li><h3 id="http-scikit-learn-org-stable-"><a href="http://scikit-learn.org/stable/">http://scikit-learn.org/stable/</a></h3>
-</li>
-</ul>
-</div>
-</div>
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="fig/scikitlearn.png"/></p>
-</div>
-</div>
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="fig/Overview clustering methods.png"/></p>
-</div>
-</div>
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="ipython-notebook">iPython notebook</h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[1]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="k">print</span> <span class="s">&quot;machine learning!&quot;</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-machine learning!
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-
-</div>
-</div>
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="execute-python-and-get-inline-plots-">Execute python and get inline plots!</h1>
-</div>
-</div>
-</div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[215]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">mean</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">variance</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">sigma</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mlab</span><span class="o">.</span><span class="n">normpdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mean</span><span class="p">,</span><span class="n">sigma</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[216]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">!</span>ls ~/nltk_data/tokenizers/punkt/
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-czech.pickle	 finnish.pickle  norwegian.pickle   slovene.pickle
-danish.pickle	 french.pickle	 polish.pickle	    spanish.pickle
-dutch.pickle	 german.pickle	 portuguese.pickle  swedish.pickle
-english.pickle	 greek.pickle	 PY3		    turkish.pickle
-estonian.pickle  italian.pickle  README
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[217]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">my_variable</span> <span class="o">=</span> <span class="err">!</span><span class="n">cat</span> <span class="o">~/</span><span class="n">nltk_data</span><span class="o">/</span><span class="n">tokenizers</span><span class="o">/</span><span class="n">punkt</span><span class="o">/</span><span class="n">README</span> <span class="o">|</span> <span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">10</span>
-<span class="k">print</span> <span class="n">my_variable</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-[&apos;Pretrained Punkt Models -- Jan Strunk (New version trained after issues 313 and 514 had been corrected)&apos;, &apos;&apos;, &apos;Most models were prepared using the test corpora from Kiss and Strunk (2006). Additional models have&apos;, &apos;been contributed by various people using NLTK for sentence boundary detection.&apos;, &apos;&apos;, &apos;For information about how to use these models, please confer the tokenization HOWTO:&apos;, &apos;http://nltk.googlecode.com/svn/trunk/doc/howto/tokenize.html&apos;, &apos;and chapter 3.8 of the NLTK book:&apos;, &apos;http://nltk.googlecode.com/svn/trunk/doc/book/ch03.html#sec-segmentation&apos;, &apos;&apos;]
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[218]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre>%%bash
-<span class="nb">echo</span> <span class="nv">$PATH</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/sbin
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="pandas">Pandas</h1>
-<ul>
-<li><h3 id="helps-load-data-into-python">Helps load data into Python</h3>
-</li>
-<li><h3 id="easy-to-analyze-the-data">Easy to analyze the data</h3>
-</li>
-<li><h3 id="makes-me-avoid-excel">Makes me avoid excel</h3>
-</li>
-<li><h3 id="http-pandas-pydata-org-"><a href="http://pandas.pydata.org/">http://pandas.pydata.org/</a></h3>
-</li>
-</ul>
-</div>
-</div>
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="getting-the-data">Getting the Data</h1>
-<ul>
-<li><h3 id="internet-is-full-of-data-we-can-crawl-it">Internet is full of data - we can crawl it</h3>
-</li>
-<li><h3 id="scikit-learn-comes-with-toy-datasets">Scikit-learn comes with (toy) datasets</h3>
-<a href="http://scikit-learn.org/stable/datasets/">http://scikit-learn.org/stable/datasets/</a></li>
-</ul>
-</div>
-</div>
-</div><div style=display:none>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[219]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">simplejson</span> <span class="kn">as</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="k">def</span> <span class="nf">build_dataset</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="n">allowed_artists</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Bob Dylan&#39;</span><span class="p">,</span> 
-                        <span class="s">&#39;Katy Perry&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;Justin Bieber&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;Kiss&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;Aerosmith&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;Lady Gaga&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;Led Zeppelin&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;Madonna&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;Maroon 5&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;Red Hot Chili Peppers&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;Taylor Swift&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;The Ramones&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;U2&#39;</span><span class="p">,</span>
-                        <span class="s">&#39;One Direction&#39;</span><span class="p">]</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;artist&#39;</span><span class="p">,</span> <span class="s">&#39;track&#39;</span><span class="p">,</span> <span class="s">&#39;lyric&#39;</span><span class="p">]</span>
-    <span class="n">dt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
-    <span class="n">artists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s">&#39;crawler/lyricsspider/output&#39;</span><span class="p">)</span>
-    <span class="n">filtered_artists</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">artist</span><span class="p">:</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">allowed_artists</span><span class="p">,</span> <span class="n">artists</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">filtered_artists</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">artist</span> <span class="ow">in</span> <span class="n">allowed_artists</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-                <span class="k">print</span> <span class="s">&quot;======== ARTIST =======&quot;</span>
-                <span class="k">print</span> <span class="n">artist</span>
-                <span class="k">print</span> <span class="s">&quot;======== LYRICS =======&quot;</span>
-                
-            <span class="n">lyrics</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s">&#39;crawler/lyricsspider/output/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">artist</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">lyric_name</span> <span class="ow">in</span> <span class="n">lyrics</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
-                <span class="n">lyric_file</span> <span class="o">=</span> <span class="s">&#39;crawler/lyricsspider/output/</span><span class="si">%s</span><span class="s">/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">lyric_name</span><span class="p">)</span>
-                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">lyric_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-                    <span class="n">lyric</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
-                    <span class="k">print</span> <span class="s">&quot;saving ..&quot;</span><span class="p">,</span> 
-                    <span class="k">print</span> <span class="n">lyric</span>
-                
-                <span class="n">dt</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">lyric</span><span class="p">[</span><span class="s">&#39;artist&#39;</span><span class="p">],</span> <span class="n">lyric</span><span class="p">[</span><span class="s">&#39;track&#39;</span><span class="p">],</span> <span class="s">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lyric</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">])]</span>
-            
-    <span class="k">return</span> <span class="n">dt</span>
-
-<span class="k">def</span> <span class="nf">data_cleaning</span><span class="p">(</span><span class="n">dataset</span><span class="p">):</span>
-    <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">lyric</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">n&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">lyric</span><span class="p">))</span>
-    <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">lyric</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">r&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">lyric</span><span class="p">))</span>
-    <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">lyric</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;.?\[.*?\] | \(.*?\)&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">lyric</span><span class="p">))</span>
-    <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">lyric</span><span class="p">:</span> <span class="n">lyric</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
-    <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;track&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;track&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">track</span><span class="p">:</span> <span class="n">track</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s">&#39;lyrics&#39;</span><span class="p">))</span>
-    <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;artist&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;artist&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">artist</span><span class="p">:</span> <span class="n">artist</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
-    <span class="k">return</span> <span class="n">dataset</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Loading-the-dataset">Loading the dataset<a class="anchor-link" href="#Loading-the-dataset">&#182;</a></h1>
-</div>
-</div>
-</div>
-</section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[220]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">!</span>ls crawler/lyricsspider/output/ <span class="p">|</span> head -n <span class="m">10</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-100 Proof Aged In Soul
-2 Brothers On The 4th Floor
-3 Doors Down
-98 Degrees
-AALIYAH
-Ace Hood
-Adele
-Aerosmith
-Afrojack
-After 7
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[221]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">!</span>ls crawler/lyricsspider/output/Aerosmith/ <span class="p">|</span> head -n <span class="m">10</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Adam&apos;s Apple.json
-Ain&apos;t Enough.json
-Ain&apos;t That A Bitch.json
-All Your Love.json
-Amazing.json
-Angel.json
-Angels Eye.json
-Animal Cracke.json
-Another Last Goodbye.json
-Attitude Adjusment.json
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[222]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="c"># helper function to load each json and add it as a row to a dataframe</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">build_dataset</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[223]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[223]:</div>
-
-<div class="output_html rendered_html output_subarea output_pyout">
-<div style="max-height:1000px;max-width:1500px;overflow:auto;">
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>artist</th>
-      <th>track</th>
-      <th>lyric</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td> Led Zeppelin</td>
-      <td>               Houses Of The Holy Lyrics</td>
-      <td> Led Zeppelin \nPhysical Graffiti \nHouses Of T...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td> Led Zeppelin</td>
-      <td> The Song Remains the Same (Live) Lyrics</td>
-      <td> I had a dream. Crazy dream. \r\nAnything I wan...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td> Led Zeppelin</td>
-      <td>                        Ramble On Lyrics</td>
-      <td> Leaves are falling all around* \nIt's time I w...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td> Led Zeppelin</td>
-      <td>                    Rock and Roll Lyrics</td>
-      <td> It's been a long time since I rock and rolled ...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td> Led Zeppelin</td>
-      <td>                   Somethin' Else Lyrics</td>
-      <td> Hey, look here, what's all this? \nThere's a c...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Data-cleaning">Data cleaning<a class="anchor-link" href="#Data-cleaning">&#182;</a></h1>
-</div>
-</div>
-</div>
-</section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="removing-newlines-from-lyrics-">Removing newlines from lyrics:</h2>
-</div>
-</div>
-</div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[224]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lyric</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[224]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-&quot;Led Zeppelin \nPhysical Graffiti \nHouses Of The Holy \nLet me take you to the movies \r\nCan I take you to the show \r\nLet me be yours ever truly \r\nCan I make your garden grow \r\nFrom the houses of the holy \r\nWe can watch the white doves go \r\nFrom the door comes Satan&apos;s daughter \r\nAnd it only goes to show \r\nAh, you know \r\nThere&apos;s an angel on my shoulder \r\nIn my hand a sword of gold \r\nLet me wander in your garden \r\nAnd the seeds of love I&apos;ll sow \r\nYou know-whoa-oh \r\nSo the world is spinning faster \r\nAre you dizzy when you&apos;re stoned \r\nLet the music be your master \r\nWill you heed the master&apos;s call \r\nOh-whoa-oh, Satan an&apos; man \r\nSaid there ain&apos;t no use in cryin&apos; \r\n&apos;Cause it will only, only drive you mad \r\nDoes it hurt to hear them lyin&apos; \r\nWas this the only world you had \r\nOh-oh \r\nSo let me take you, take you to the movie \r\nCan I take you, baby, to the show \r\nWhy don&apos;t you let me be yours ever truly \r\nCan I make your garden grow \r\nYou know-whoa, that&apos;s right&quot;
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="removing-escape-sequences-">Removing escape sequences:</h2>
-</div>
-</div>
-</div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[225]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">lyric</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">n&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">lyric</span><span class="p">))</span>
-<span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">lyric</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">r&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">lyric</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[226]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lyric</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[226]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-&quot;Led Zeppelin Physical Graffiti Houses Of The Holy Let me take you to the movies Can I take you to the show Let me be yours ever truly Can I make your garden grow From the houses of the holy We can watch the white doves go From the door comes Satan&apos;s daughter And it only goes to show Ah, you know There&apos;s an angel on my shoulder In my hand a sword of gold Let me wander in your garden And the seeds of love I&apos;ll sow You know-whoa-oh So the world is spinning faster Are you dizzy when you&apos;re stoned Let the music be your master Will you heed the master&apos;s call Oh-whoa-oh, Satan an&apos; man Said there ain&apos;t no use in cryin&apos; &apos;Cause it will only, only drive you mad Does it hurt to hear them lyin&apos; Was this the only world you had Oh-oh So let me take you, take you to the movie Can I take you, baby, to the show Why don&apos;t you let me be yours ever truly Can I make your garden grow You know-whoa, that&apos;s right&quot;
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="removing-the-words-and-words-">Removing the [words] and (words):</h2>
-</div>
-</div>
-</div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[227]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">111</span><span class="p">]</span><span class="o">.</span><span class="n">lyric</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[227]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-&quot;[** feat. Usher:]   [Justin Bieber:] Chestnuts roasting on an open fire Jack Frost nipping at your nose (Yeah) Yuletide carols being sung by a choir And folks dressed up like Eskimos  [Justin Bieber:] Everybody knows a turkey and some mistletoe Help to make the season bright Tiny tots with their eyes all aglow Will find it hard to sleep tonight  [Usher:] They know that Santa&apos;s on his way He&apos;s loaded lots of toys and many goodies on his sleigh [Both:] And every mother&apos;s child is gonna spy To see if reindeer really know how to fly  [Both:] And so, I&apos;m offering this simple phrase To kids from one to ninety-two Although it&apos;s been said many times, many ways Merry Christmas to you  [Both:] (Yeah) And so, I&apos;m offering this simple phrase (oh wooah) To kids from one to ninety-two (Yeah, yeah) Although it&apos;s been said, many times, many ways Merry Christmas, Merry Christmas (Yeah), Merry Christmas (Oh No) Merry Christmas to you! &quot;
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[228]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">lyric</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;.?\[.*?\] | \(.*?\)&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">lyric</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[229]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">111</span><span class="p">]</span><span class="o">.</span><span class="n">lyric</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[229]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-&quot; Chestnuts roasting on an open fire Jack Frost nipping at your nose Yuletide carols being sung by a choir And folks dressed up like Eskimos Everybody knows a turkey and some mistletoe Help to make the season bright Tiny tots with their eyes all aglow Will find it hard to sleep tonight They know that Santa&apos;s on his way He&apos;s loaded lots of toys and many goodies on his sleighAnd every mother&apos;s child is gonna spy To see if reindeer really know how to fly And so, I&apos;m offering this simple phrase To kids from one to ninety-two Although it&apos;s been said many times, many ways Merry Christmas to you (Yeah) And so, I&apos;m offering this simple phrase To kids from one to ninety-two Although it&apos;s been said, many times, many ways Merry Christmas, Merry Christmas, Merry Christmas Merry Christmas to you! &quot;
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="lowering-all-charachters-">Lowering all charachters:</h2>
-</div>
-</div>
-</div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[230]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">lyric</span><span class="p">:</span> <span class="n">lyric</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[231]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">111</span><span class="p">]</span><span class="o">.</span><span class="n">lyric</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[231]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-&quot; chestnuts roasting on an open fire jack frost nipping at your nose yuletide carols being sung by a choir and folks dressed up like eskimos everybody knows a turkey and some mistletoe help to make the season bright tiny tots with their eyes all aglow will find it hard to sleep tonight they know that santa&apos;s on his way he&apos;s loaded lots of toys and many goodies on his sleighand every mother&apos;s child is gonna spy to see if reindeer really know how to fly and so, i&apos;m offering this simple phrase to kids from one to ninety-two although it&apos;s been said many times, many ways merry christmas to you (yeah) and so, i&apos;m offering this simple phrase to kids from one to ninety-two although it&apos;s been said, many times, many ways merry christmas, merry christmas, merry christmas merry christmas to you! &quot;
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="more-weird-characters">More weird characters</h2>
-</div>
-</div>
-</div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[232]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">lyric</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[232]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-&quot;i had a dream. crazy dream. anything i wanted to know, any place i needed to go  hear my song. people won&apos;t you listen now? sing along. you don&apos;t know what you&apos;re missing now. any little song that you know everything that&apos;s small has to grow. and it has to grow!  na na na na wow!  california sunlight, sweet calcutta rain honolulu starbright - the song remains the same.  sing out hare hare, dance the hoochie koo. city lights are oh so bright, as we go sliding... sliding... sliding through.&quot;
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[233]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">lyric</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">&#39;[\W]&#39;</span><span class="p">,</span> <span class="s">&#39; &#39;</span> <span class="p">,</span><span class="n">lyric</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[234]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">lyric</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[234]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-&apos;i had a dream  crazy dream  anything i wanted to know  any place i needed to go  hear my song  people won t you listen now  sing along  you don t know what you re missing now  any little song that you know everything that s small has to grow  and it has to grow   na na na na wow   california sunlight  sweet calcutta rain honolulu starbright   the song remains the same   sing out hare hare  dance the hoochie koo  city lights are oh so bright  as we go sliding    sliding    sliding through &apos;
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div><div style=display:none>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="Removing-Lyrics-and-lowering-track-names">Removing Lyrics and lowering track names<a class="anchor-link" href="#Removing-Lyrics-and-lowering-track-names">&#182;</a></h6>
-</div>
-</div>
-</div>
-
-    </div><div style=display:none>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[235]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="p">[</span><span class="s">&#39;track&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;track&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">track</span><span class="p">:</span> <span class="n">track</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s">&#39;lyrics&#39;</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-    </div><div style=display:none>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[236]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">111</span><span class="p">]</span><span class="o">.</span><span class="n">track</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[236]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-&apos;the christmas song (chestnuts roasting on an open fire) (single) &apos;
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div><div style=display:none>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[237]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="p">[</span><span class="s">&#39;artist&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;artist&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">artist</span><span class="p">:</span> <span class="n">artist</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-    </div><div style=display:none>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[238]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s">&#39;lyric&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">lyric</span><span class="p">:</span> <span class="n">lyric</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s">&#39;string_escape&#39;</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[239]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[239]:</div>
-
-<div class="output_html rendered_html output_subarea output_pyout">
-<div style="max-height:1000px;max-width:1500px;overflow:auto;">
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>artist</th>
-      <th>track</th>
-      <th>lyric</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td> led zeppelin</td>
-      <td>               houses of the holy </td>
-      <td> led zeppelin physical graffiti houses of the h...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td> led zeppelin</td>
-      <td> the song remains the same (live) </td>
-      <td> i had a dream  crazy dream  anything i wanted ...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td> led zeppelin</td>
-      <td>                        ramble on </td>
-      <td> leaves are falling all around  it s time i was...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td> led zeppelin</td>
-      <td>                    rock and roll </td>
-      <td> it s been a long time since i rock and rolled ...</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td> led zeppelin</td>
-      <td>                   somethin' else </td>
-      <td> hey  look here  what s all this  there s a car...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[240]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lyric</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[240]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-&apos;led zeppelin physical graffiti houses of the holy let me take you to the movies can i take you to the show let me be yours ever truly can i make your garden grow from the houses of the holy we can watch the white doves go from the door comes satan s daughter and it only goes to show ah  you know there s an angel on my shoulder in my hand a sword of gold let me wander in your garden and the seeds of love i ll sow you know whoa oh so the world is spinning faster are you dizzy when you re stoned let the music be your master will you heed the master s call oh whoa oh  satan an  man said there ain t no use in cryin   cause it will only  only drive you mad does it hurt to hear them lyin  was this the only world you had oh oh so let me take you  take you to the movie can i take you  baby  to the show why don t you let me be yours ever truly can i make your garden grow you know whoa  that s right&apos;
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Feature-Extraction">Feature Extraction<a class="anchor-link" href="#Feature-Extraction">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[241]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
-<span class="n">cnt_vec</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span> <span class="c"># Bag of words</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[242]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">X</span> <span class="o">=</span> <span class="n">cnt_vec</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">lyric</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[243]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[243]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-(140, 3157)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[244]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[244]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([[0, 0, 0, ..., 0, 1, 0]])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Very-sparse">Very sparse<a class="anchor-link" href="#Very-sparse">&#182;</a></h1>
-</div>
-</div>
-</div>
-</section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[245]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="k">print</span> <span class="s">&quot;Average non zero features </span><span class="si">%.0f</span><span class="s"> &quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">nnz</span> <span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span> <span class="s">&quot;out of </span><span class="si">%d</span><span class="s"> features&quot;</span> <span class="o">%</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Average non zero features 92 
-out of 3157 features
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="well-what-are-our-features-">Well, what are our features?</h1>
-</div>
-</div>
-</div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[246]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
-<span class="n">per_feature_weight_sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="n">weight_feature</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">per_feature_weight_sum</span><span class="p">,</span> <span class="n">cnt_vec</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">())</span>
-
-<span class="nb">sorted</span><span class="p">(</span><span class="n">weight_feature</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span> <span class="c"># 10 most common features in all rows</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[246]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-[(1662, u&apos;you&apos;),
- (1323, u&apos;the&apos;),
- (934, u&apos;to&apos;),
- (847, u&apos;and&apos;),
- (783, u&apos;me&apos;),
- (628, u&apos;it&apos;),
- (485, u&apos;in&apos;),
- (467, u&apos;that&apos;),
- (451, u&apos;my&apos;),
- (419, u&apos;on&apos;)]
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="lets-try-k-means">Lets try K-means</h1>
-</div>
-</div>
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[247]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">kmeans_model</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
-<span class="n">kmeans_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[247]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-KMeans(copy_x=True, init=&apos;k-means++&apos;, max_iter=300, n_clusters=3, n_init=10,
-    n_jobs=1, precompute_distances=True, random_state=None, tol=0.0001,
-    verbose=0)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[248]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">Y</span> <span class="o">=</span> <span class="n">kmeans_model</span><span class="o">.</span><span class="n">labels_</span>
-<span class="k">print</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span>
-<span class="k">print</span> <span class="n">Y</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-(140,)
-[0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0
- 0 0 0 0 0 2 2 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 2 0 0 0 0 0 0 0
- 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0
- 0 0 0 0 2 0 0 0 2 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div><div class="fragment">
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[249]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.metrics.cluster</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
-<span class="n">silhouette_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[249]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-0.27404528091233199
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This is one of the pitfalls of silhouette score - Low number of clusters =&gt; high score.</p>
-<p>We could grid search the K or use of the other clustering algorithms we know about</p>
-</div>
-</div>
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Jump-directly-to-hierarchical-clustering">Jump directly to hierarchical clustering<a class="anchor-link" href="#Jump-directly-to-hierarchical-clustering">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div style=display:none>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[250]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">rcParams</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">5</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-    </div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[251]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">pdist</span>
-<span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="kn">import</span> <span class="n">dendrogram</span><span class="p">,</span> <span class="n">linkage</span>
-
-<span class="n">D</span> <span class="o">=</span> <span class="n">pdist</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">metric</span><span class="o">=</span><span class="s">&#39;cosine&#39;</span><span class="p">)</span>
-<span class="n">Z</span> <span class="o">=</span> <span class="n">linkage</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#39;complete&#39;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s">&#39;euclidean&#39;</span><span class="p">)</span>
-
-<span class="n">dendro</span> <span class="o">=</span> <span class="n">dendrogram</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-+prz+b52bNAyTx4/awAAAAAwWwZ10HaHTGduxL8DAAAAALTN7e76+1LGmOdLepO19rL25zdKesy9
-UYgx5j2SPmmtvbX9+cuSLrbW/lVSmqdPn6bzBgAAAGCmHTt2rPsil6TBd3H8nKQLjDFPkfR1SS+T
-dEXXMmuSXiPp1naHrunrnPXLCAAAAADMur5DHK21jyrqfN0h6UuSPmitvcsYc5Ux5qr2Mh+VtG2M
-uVvSKUk/m3OeAQAAAKCU+g5xBAAAAABMzqCbhAAAAAAAJoQOGgAAAAAEgg4aAAAAMARjzKXTzgPK
-b9BdHDNljHlOe50/LGnbWvu7E17/orX2wUmu01m3sdbaIZc9LOlBa+1j7c+vlfR3JP2WpB+01n5o
-yHSG+r7GmN+U9IeS7rDW7gyTdp+0jkiStfbMOOm00+oohyz1y6cx5gmSGsOu11fOadMpsnZ57lhr
-/yan9Ke275ZRd900xvykpP+j/d9/Za397QnmZey6Y4z50fbb50k6Y629ccj1ZtJWobiMMS9rv32B
-pD+11n4w4/R/SlG9nJP0h9baj2SZvrOeTI43eR13jTFXSDpf0i2KzmP+KMv082aM+V1Jm+2PL1B0
-8zwZY35V0t9IWpT0XWvtv5lODgdLamuNMT8t6QFJT5N0d/d5ap7nYaHJ85gwynFuoh00ST8k6Sxr
-7VuNMf86DhpjrpN0liQr6TnW2ve14z8v6e9LOixpzVr7n9vx17f/NG5Q39GOv1TSOZJqkg5Ya9/S
-jr9dUlPSC4wx7vIflPQJSb9nrf2mk5+BHSJjzOXW2v/Sfr8q6TFJz1C0Ad7cjt8u6ZNOXq0TX5f0
-EWvtppPmLZIelnR3+zv8fPu/FiW9WdLrJT1V0ofay/+CpEckLShqmN8z4PsmlrOkOyV9W9IvGWMO
-WGuvH5D+k5yiWLXW3tCO/6qixzHIGPN3rbVvHbBdEsvZVw7GmHdK+tt2nh5nrf2VhO2y1xHuk39f
-Pn9G0o6ksyU9WdIb2vFr2jFJ+o619t8NKGdfOr564qvPvv3Clx9f/IWSHifpIkWPwbh5QPn7tpcv
-nTe11/t9xphPWWtv6be9ksqhT14Sy7jPNvfVzQ9K+riiff1bzt/6lveVva9O+co+bmM+1LVeX9vm
-K2Nf+ol1p0/5JNZNSU906t213WkkpOPbXr7ySVt3rlc0wuM7knattW/vV26Sni3pQUlvl/RzTp59
-6fjaAF85++qyL+7bvmn33bTl6TumvVPSQ5Ie7cqnL520bZXv+/rS8cVT5dPVVT978tknjadK+qKk
-M5L+3EnPV/a+47evbi5aa1/Z3sZPl/SRrm3V3Tb4ysa3z/mON7664NtWvuOub5v79q3E8pF0oaR3
-SbpW0iFJf9Re3tcG+9JPWz6+cvDFffXklLX2k+1lnu3kuSnpPGvtG9p1pkdX3fSt11evfPtEqmOC
-r61VVL+fZq19vek8L09bH3zbxbcfpT2G+M5LfOXj2x9928V3TBi6H9LneOAr+74mPcRxV9I32u8/
-58Qfbn+RH5T0Eif+OEmvk/RpSU904n+pqCE93XVCcqmk5XbBPuLE/0RRJft41/J/JunDkl5mjHmL
-E487RC+X9P/GQWPM7caYa9sb5uXO8v9nO3//SZ2d3jdYa9/RXudHnfjHJL1TUs0Y82Yn/k1J84p2
-3ofdfFprH2s3UFtOfFfS2dbat0l6Qtf3/WrC9/WV8xestZ9pV3i3HB7zpP8eSZe1X//AiX9PO++f
-ULQjxXzbJS7nk3LKuU85fFPS4yXdKOm7cbBru/zzIfIf5/OTXfl8kqID3FcUlW3siKIDy7+VVHXi
-vnL2pfO09v911xNfffZtryPtvNzQlR9f/EWS/kG7/CtOPLGey7+9XiTpuQnpzEv6gKJ9+nuceOL2
-UrS/dJeDLy+J+257m78+YZv76uafKXpm4xVd+7pveV/Z++qUr+zjNubHu9Ybt21/rs62zVfGcfrd
-dTCx7vTZJ3x189Pt5f+VovZ2UDq+7fWYpEMJ5eOrg76601T0a+7b1MlXbmuKyujtkv54iHR8bZWv
-nH112Rf35dOXvi/uq2++8nSPad3HlsMJ+fSlk7SPSv62yvd9fen44n/dJ589+0WfdiApn4nf1Vr7
-65Jaik7G/9JJw1f2vuO3rwz+V/sHn//WfsV8bYOvbHz7nG+f9tUFXz59x13fNvftW77y2bTWtiRd
-r6hDGfO1wb70B5VP9/mErxx88cS6FnfO2u+/4Cz/LUm3G2N+RdI9cbBP2+lbb7/zwqR9ItUxQf62
-9jOS3th+f2fXepPqw72e9H3bxXee2u8YkrS877zEVz6J9bzPdvGdF/r2l6Ry/mb7e3XnxVf2fU30
-Cpp1hp3Y6PlpsTvasVPGmHuc+JyiX0O/T9KXnfhXFfVGF4wxV9j9oZKntF8o/5+zrtuNMU9UdAXP
-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
-6jxvcNvrpzvxjyg66XyFOs9jXizptYq2y//txONt+ER17iv/2Gkjn+/k56vxe2PM5X1LIHLCOf9z
-21KRZKwAAAQdSURBVMiXOvHvc+LPU9SWvEWd4vOD7rZqV/vl9jgnHh9D3qpodEtsSdH51Ns1RAet
-j/j86S3qvOLjtgFu+ifiNq/rvO0RSc9POB99RNGPYzeo80eOpyqqg+9UtC/F/omiztBrFf0Q2Je1
-9svW2m+1f2DYa4NNNBfvuKI5y6/u+l4L7TbAbSN/2Tn2vtKJP0X7bZWb/8X2d3i7Ouv5prX2rvbH
-ZzrL/7SiH3q+R9EPNW5+ntjOj1v+jyjaL96qzv305YrqwdPUeS7wOkXHwZer83x0QdF++mbtnyed
-a619oaI66J4z/5iko4o65+4+1FcoHTTfpekPK7rE3D1sxTdUctCl1O70fUMPPqvkS76+oYCJ6fS5
-JO7mx70bUGL+27/uJaWTthx8cZ9vK+HSfZ90fOXsG/7lK0/f8vEQiTfJadisZ4iKL94n/7544vbt
-M7zGl/+4w/7r6uxo9xsikZS+Lx23fNyTMN929MV929E3FCLx+/Yp/6ThaL667CvLxOW7ysztHLs/
-cvzqEOkPqoPdw3TiuvxmddZl3/KD0uneJ3bVHh+vzvJZU3Ib6WvbfNvWx5dPX/q+eGL++2wv377o
-q4OJfPtQn/X6ytO3ryTmp133H1Rv3felk/aY426XgW2hPENAR2g7ffXcVz99bZIvHV/c9yOlb2hr
-Uj301U2fVO3dCOn7tq1vvYnftU9d9qXjW6+vbfBtw8Ry6JMfH996ffFBda27rfqwkuuI75jjq1Np
-pT3u9jsv6cmnr43p0/akOv8b4fzD973cCxV7x960bVWf/LwnZX58ba1vv/a1PUn7V1bH3cju7u7U
-X5dffvklzvurx0jnqPP+x7JOP+/v68t/huWQd/q+73XB5Zdf/rr2a2D5p11+WuVz+eWXLzvvfybr
-/PvSz/uVdn/Jc3uNUHdSlZkv/bzr4LReAbaFvn0oq7bKl/5U9i1exX+F1jZkVZezavdHaIMT1xta
-WzWB7ZhJm5dV+qG1kXnnJ+fzmEuc90OnPem7OPr45lil9cumc85XPE41q/Sz4suPL/9p+dLJO33f
-93qzouE+c5L+oQaXf9rl08qqfHxzDLPKvy/9vKXdX/LcXmnTTltmvvTzroPTElpb6NteWbVVvvSn
-tW+h+EJrG7Kqy1m1+2nz41tvaG1V3rJq87JKP7Q2Mu/85Llfj1aXp90rbvcoL3bePzujXupy1unn
-/X19+c+wHPJOf5jvNbD80y4/rfLx5TOr/OddDn3Wm7gdp5HPvOtO3tswtFeAbeEw5Z9VW1X67csr
-/1dodSfD483FadLJat/qc96QKj9Ff2XV5mWVflnr+TTSH7Uuz+3u7g7uxQEAAAAAchfKTUIAAAAA
-YObRQQMAAACAQNBBAwAAAIBA0EEDAAAAgEDQQQMAAACAQPz/h2YHhcN98DUAAAAASUVORK5CYII=
-"
->
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[252]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy.cluster.hierarchy</span> <span class="kn">import</span> <span class="n">fcluster</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">fcluster</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s">&#39;distance&#39;</span><span class="p">)</span>
-<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-9
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[253]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">silhouette_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[253]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
--0.21133905101768244
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[265]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_20newsgroups</span>
-
-<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-                             <span class="n">min_df</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
-                             <span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">,</span>
-                             <span class="n">use_idf</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">categories</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">&#39;alt.atheism&#39;</span><span class="p">,</span>
-    <span class="s">&#39;talk.religion.misc&#39;</span><span class="p">,</span>
-    <span class="s">&#39;comp.graphics&#39;</span><span class="p">,</span>
-    <span class="s">&#39;sci.space&#39;</span><span class="p">,</span>
-<span class="p">]</span>
-
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">fetch_20newsgroups</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s">&#39;all&#39;</span><span class="p">,</span>
-                             <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-                             <span class="n">categories</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span>
-                             <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">target</span>
-<span class="n">real_k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-
-<span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">real_k</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="s">&#39;k-means++&#39;</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[266]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[266]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-KMeans(copy_x=True, init=&apos;k-means++&apos;, max_iter=100, n_clusters=4, n_init=1,
-    n_jobs=1, precompute_distances=True, random_state=None, tol=0.0001,
-    verbose=0)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[267]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">
-    Out[267]:</div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-array([0, 1, 2, 3], dtype=int32)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[268]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Homogeneity: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">homogeneity_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Completeness: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">completeness_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;V-measure: </span><span class="si">%0.3f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">v_measure_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Adjusted Rand-Index: </span><span class="si">%.3f</span><span class="s">&quot;</span>
-      <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">adjusted_rand_score</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;Silhouette Coefficient: </span><span class="si">%0.3f</span><span class="s">&quot;</span>
-      <span class="o">%</span> <span class="n">metrics</span><span class="o">.</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Homogeneity: 0.389
-Completeness: 0.461
-V-measure: 0.422
-Adjusted Rand-Index: 0.308
-Silhouette Coefficient: 0.006
-
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">nltk</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
-<span class="kn">from</span> <span class="nn">nltk.stem.snowball</span> <span class="kn">import</span> <span class="n">SnowballStemmer</span>
-<span class="k">class</span> <span class="nc">NLTKStemmer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">snowball</span> <span class="o">=</span> <span class="n">SnowballStemmer</span><span class="p">(</span><span class="s">&#39;english&#39;</span><span class="p">)</span>
-    
-    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">doc</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">snowball</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span> 
-<span class="n">cnt_vec</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">=</span><span class="n">NLTKStemmer</span><span class="p">(),</span>
-                          <span class="n">stop_words</span><span class="o">=</span><span class="s">&#39;english&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">X</span> <span class="o">=</span> <span class="n">cnt_vec</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">lyric</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div></section>
     </section>
 </div>

@@ -1,7 +1,7 @@
 Title: IPython Notebook on Amazon
 Date: 2014-06-19 18:13
 Category: IPython
-Tags: python, notebook, amazon, thesis
+Tags: Python, iPythonNotebook, Amazon, Thesis 
 Slug: notebookonremote
 Author: Oscar Carlsson
 Lang: en
