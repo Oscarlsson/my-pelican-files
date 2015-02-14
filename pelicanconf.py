@@ -43,6 +43,7 @@ DISQUS_SITENAME = u'oscarstechblog'
 SITETAGLINE = "a developer's blog"
 DELETE_OUTPUT_DIRECTORY = False
 TWITTER_USERNAME = "oscarlsson"
+GOOGLE_ANALYTICS="UA-52649647-1"
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
