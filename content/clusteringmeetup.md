@@ -1,7 +1,7 @@
 Title: Introduction to Clustering @ Machine Learning meetup
 Date: 2015-02-07 10:18
 Category: ML
-Tags: MachineLearning, Python, Scikit-learn, Clustering, FeatureEngineering 
+Tags: PublicSpeaking, MachineLearning, Python, Scikit-learn, Clustering, FeatureEngineering 
 Slug: clustering-meetup-talk
 Author: Oscar Carlsson
 Summary: I gave a talk on introduction to clustering and feature engineering at the Machine Learning meetup-group in Gothenburg. This post includes the links to presentations and abstract.
